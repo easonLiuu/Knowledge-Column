@@ -29,6 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ValidateInput, { RulesProp } from '../components/ValidateInput.vue'
@@ -41,6 +42,7 @@ export default defineComponent({
     ValidateForm
   },
   setup () {
+    const store = useStore()
     const inputRef = ref<any>()
     const emailVal = ref('')
     const router = useRouter()
@@ -55,7 +57,8 @@ export default defineComponent({
     const onFormSubmit = (result: boolean) => {
       // console.log(inputRef.value.validateInput())
       if (result) {
-        router.push({ name: 'column', params: { id: 1 } })
+        router.push('/')
+        store.commit('login')
       }
     }
     return {
