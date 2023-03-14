@@ -1,8 +1,18 @@
 <template>
    <div class="container">
       <global-header :user="currentUser"></global-header>
-      <home></home>
-      <login></login>
+      <router-view></router-view>
+      <footer class="text-center py-4 text-secondary bg-light mt-6">
+      <small>
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">© 2023 知识专栏</li>
+          <li class="list-inline-item">关于</li>
+          <li class="list-inline-item">文档</li>
+          <li class="list-inline-item">联系</li>
+          <li class="list-inline-item">更多</li>
+        </ul>
+      </small>
+    </footer>
    </div>
 </template>
 
@@ -10,20 +20,16 @@
 import { defineComponent } from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import GlobalHeader, { UserProps } from './components/GlobalHeader.vue'
-import Home from './views/Home.vue'
-import Login from './views/Login.vue'
 
 const currentUser: UserProps = {
-  isLogin: true,
+  isLogin: false,
   name: 'eason'
 }
 
 export default defineComponent({
   name: 'App',
   components: {
-    GlobalHeader,
-    Home,
-    Login
+    GlobalHeader
   },
   setup () {
     return {

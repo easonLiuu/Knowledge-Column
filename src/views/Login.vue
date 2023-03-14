@@ -29,6 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ValidateInput, { RulesProp } from '../components/ValidateInput.vue'
 import ValidateForm from '../components/ValidateForm.vue'
@@ -42,6 +43,7 @@ export default defineComponent({
   setup () {
     const inputRef = ref<any>()
     const emailVal = ref('')
+    const router = useRouter()
     const passwordVal = ref('')
     const emailRules: RulesProp = [
       { type: 'required', message: '电子邮箱地址不能为空' },
@@ -52,6 +54,9 @@ export default defineComponent({
     ]
     const onFormSubmit = (result: boolean) => {
       // console.log(inputRef.value.validateInput())
+      if (result) {
+        router.push({ name: 'column', params: { id: 1 } })
+      }
     }
     return {
       emailRules,
