@@ -14,12 +14,12 @@ interface ImageProps {
     createAt?: string;
 }
 export interface PostProps {
-    _id: string;
+    _id?: string;
     title: string;
     excerpt?: string;
     content?: string;
     image?: ImageProps;
-    createdAt: string;
+    createdAt?: string;
     column: string;
 }
 export interface ColumnProps {
@@ -56,7 +56,7 @@ const store = createStore<GlobalDataProps>({
     loading: false,
     columns: [],
     posts: [],
-    user: { isLogin: false }
+    user: { isLogin: true }
   },
   mutations: {
     // login (state) {
