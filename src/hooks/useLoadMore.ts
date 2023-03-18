@@ -8,17 +8,18 @@ const useLoadMore = (actionName: string, total: ComputedRef<number>,
   params: LoadParams = { currentPage: 2, pageSize: 5 }) => {
   const store = useStore()
   const currentPage = ref(params.currentPage)
-  const requestParams = {
+  // 设置为响应式的
+  const requestParams = computed(() => ({
     currentPage: currentPage.value,
     pageSize: params.pageSize
-  }
+  }))
   const loadMorePage = () => {
-    store.dispatch(actionName, requestParams).then(() => {
+    store.dispatch(actionName, requestParams.value).then(() => {
       currentPage.value++
     })
   }
   const isLastPage = computed(() => {
-    return Math.ceil(total.value / params.pageSize) === currentPage.value
+    return Math.ceil(total.value / params.pageSize) < currentPage.value
   })
   return {
     loadMorePage,
