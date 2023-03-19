@@ -24,7 +24,11 @@
         >
           编辑
         </router-link>
-        <button type="button" class="btn btn-danger" @click.prevent="modalIsVisible = true">删除</button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          @click.prevent="modalIsVisible = true"
+        >删除</button>
       </div>
     </article>
   </div>

@@ -8,7 +8,7 @@ const useLoadMore = (actionName: string, total: ComputedRef<number>,
   params: LoadParams = { currentPage: 2, pageSize: 5 }) => {
   const store = useStore()
   const currentPage = ref(params.currentPage)
-  // 设置为响应式的
+  // 设置为响应式的 如果不设置 直接使用对象 很可能丧失响应性
   const requestParams = computed(() => ({
     currentPage: currentPage.value,
     pageSize: params.pageSize
